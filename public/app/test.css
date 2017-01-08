@@ -2,3 +2,17 @@ body
 {
 	background:#EEE;
 }
+hr
+{
+	border-color:#CCC;
+}
+.danger
+{
+	color:red;
+}
+.page-header
+{
+	margin-top:0;
+	border-bottom:1px solid #CCC;
+	padding-top:0;
+}

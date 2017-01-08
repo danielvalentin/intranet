@@ -17,7 +17,7 @@ class CreateProjectsTable extends Migration
     		$table->increments('id');
     		$table->integer('user_id');
     		$table->string('name');
-    		$table->text('notes');
+    		$table->text('description');
     		$table->timestamps();
 	    });
     }

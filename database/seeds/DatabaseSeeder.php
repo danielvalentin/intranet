@@ -17,19 +17,28 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-    	$login = Permission::create([
-    		'name' => 'login'
+    	$login = Permission::firstOrCreate([
+    		'name' => 'Login',
+    		'slug' => 'login'
+    	]);
+    	$editroles = Permission::firstOrCreate([
+    		'name' => 'Edit users',
+    		'slug' => 'edit_users'
+    	]);
+    	$editdepartments = Permission::firstOrCreate([
+    		'name' => 'Edit departments',
+    		'slug' => 'edit_departments'
     	]);
 
-		$userrole = Role::create([
+		$userrole = Role::firstOrCreate([
 			'name' => 'user',
 			'description' => 'Regular user'
 		]);
-		$adminrole = Role::create([
+		$adminrole = Role::firstOrCreate([
 			'name' => 'admin',
 			'description' => 'Admin user'
 		]);
-		$superadminrole = Role::create([
+		$superadminrole = Role::firstOrCreate([
 			'name' => 'superadmin',
 			'description' => 'Superadmin user'
 		]);
@@ -37,18 +46,21 @@ class DatabaseSeeder extends Seeder
 		$login->roles()->attach($userrole);
 		$adminrole->permissions()->attach($login->id);
 		$superadminrole->permissions()->attach($login->id);
+		$superadminrole->permissions()->attach($editroles->id);
+		$superadminrole->permissions()->attach($editdepartments->id);
 
-		$devs = Department::create([
+		$devs = Department::firstOrCreate([
 			'name' => 'Development'
 		]);
 		
-		$user = User::create([
+		$user = User::updateOrCreate([
 			'name' => 'daniel',
 			'email' => 'saktomail@gmail.com',
 			'password' => bcrypt('danielv')
 		]);
 		$user->roles()->attach($login);
 		$user->roles()->attach($adminrole);
+		$user->roles()->attach($superadminrole);
 		$user->departments()->attach($devs);
     }
 }

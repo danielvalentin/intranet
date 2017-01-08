@@ -10,7 +10,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'logins',
+        'last_login'
     ];
 
     /**
@@ -70,4 +74,14 @@ class User extends Authenticatable
 		}
 		return $name;
 	}
+
+	public function delete()
+	{
+		$this->roles()->detach();
+		$this->departments()->detach();
+		$this->clients()->delete();
+		$this->addresses()->delete();
+		return parent::delete();
+	}
+
 }

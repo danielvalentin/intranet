@@ -16,6 +16,7 @@ class CreateDepartmentsTable extends Migration
     	Schema::create('departments', function($table){
     		$table->increments('id');
     		$table->string('name');
+    		$table->text('description');
 	    });
     }
 

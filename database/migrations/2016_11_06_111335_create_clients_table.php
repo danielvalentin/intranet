@@ -13,7 +13,7 @@ class CreateClientsTable extends Migration
      */
     public function up()
     {
-    	Scheme::create('clients', function($table){
+    	Schema::create('clients', function($table){
     		$table->increments('id');
     		$table->integer('user_id');
 			$table->string('type')->default('private');

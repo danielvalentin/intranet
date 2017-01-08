@@ -6,6 +6,9 @@
 
     <div class="panel-body">
         You are logged in!
+        <p>
+			<?php var_dump(User::can('edit_departments')); ?>
+        </p>
     </div>
 </div>
 @endsection

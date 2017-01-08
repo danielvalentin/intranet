@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Blade;
 
-class BladeProvider extends ServiceProvider
+class BladeServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.

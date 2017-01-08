@@ -6,7 +6,7 @@
 
 {{ \Site::checkMessages($errors) }}
 
-<form role="form" method="POST" action="{{ route('userResetPasswordPost') }}">
+<form role="form" method="POST" action="{{ route('user.resetPasswordPost') }}">
 	{!! csrf_field() !!}
 	<input type="hidden" name="token" value="{{ $token }}">
 

@@ -8,7 +8,7 @@ class Project extends Model {
 	protected $fillable = [
 		'user_id',
 		'name',
-		'notes'
+		'description'
 	];
 	
 	public function owner()

@@ -17,5 +17,12 @@ class Role extends Model {
 	{
 		return $this->belongsToMany('\App\Http\Models\Permission', 'roles_permissions');
 	}
+
+	public function delete()
+	{
+		$this->users()->detach();
+		$this->permissions()->detach();
+		return parent::delete();
+	}
 	
 }

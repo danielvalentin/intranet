@@ -9,7 +9,7 @@
 
 @if (count($errors) > 0)
 	<div class="alert alert-danger">
-		<strong>Hov!</strong> Der var nogle problemer med din indtastning<br><br>
+		<strong>Whoops!</strong> Please review the errors below<br><br>
 		<ul>
 			@foreach ($errors->all() as $error)
 				<li>{{ $error }}</li>
@@ -18,18 +18,18 @@
 	</div>
 @endif
 
-<form role="form" method="POST" action="{{ route('userForgotPasswordPost') }}">
+<form role="form" method="POST" action="{{ route('user.forgotPasswordPost') }}">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 	<div class="form-group">
-		<label class="control-label">E-Mail addresse:</label>
-		<input type="email" class="form-control" placeholder="Din e-mail.." name="email" value="{{ old('email') }}">
+		<label class="control-label">E-Mail address:</label>
+		<input type="email" class="form-control" placeholder="Your e-mail.." name="email" value="{{ old('email') }}">
 	</div>
 
 	<div class="form-group">
 		<div class="">
 			<button type="submit" class="btn btn-primary">
-				Send password nulstil link
+				Send password reset link
 			</button>
 		</div>
 	</div>

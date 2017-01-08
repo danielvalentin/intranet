@@ -104,4 +104,18 @@ abstract class Site {
 		return implode(',', $names);
 	}
 
+	public static function slugify(Illuminate\Database\Eloquent\Model $model, $name = '')
+	{
+		$slug = slugify($name);
+		$orgslug = $slug;
+		$counter = 2;
+		$existing = $model::where('slug', '=', $slug);
+		while($existing)
+		{
+			$slug = $orgslug . '-' . $counter;
+			$counter++;
+		}
+		return $slug;
+	}
+
 }
